@@ -4215,17 +4215,17 @@ struct U3CU3Ec_t2AA445419A89AAD738D545070C4FD3B274012BB0_StaticFields
 	Func_2_t85D1F7C2022B349817C22FC72C474CD33FFABE93* ___U3CU3E9__12_0_1;
 };
 
+// AudioManager/<>c__DisplayClass5_0
+struct U3CU3Ec__DisplayClass5_0_tDD85608198A296C2C97868D289F0F35ECD9FB367  : public RuntimeObject
+{
+	// System.String AudioManager/<>c__DisplayClass5_0::name
+	String_t* ___name_0;
+};
+
 // AudioManager/<>c__DisplayClass6_0
 struct U3CU3Ec__DisplayClass6_0_t181AAFA51155A93676051B979945909777364917  : public RuntimeObject
 {
 	// System.String AudioManager/<>c__DisplayClass6_0::name
-	String_t* ___name_0;
-};
-
-// AudioManager/<>c__DisplayClass7_0
-struct U3CU3Ec__DisplayClass7_0_t20AE7DED8DD71264D66F1E31288F57F7077884C2  : public RuntimeObject
-{
-	// System.String AudioManager/<>c__DisplayClass7_0::name
 	String_t* ___name_0;
 };
 
@@ -17411,19 +17411,13 @@ struct AspectRatioFitter_tEA1004A8240374C9BE7623981F999AA9789CDD09  : public UIB
 struct AudioManager_t4BE66A4A0E184D85AF74C37BC93BFBEC52953C7B  : public PersistentSingleton_1_t8AB5A6BE659158E7E8553BBD90BD052A91962829
 {
 	// Sound[] AudioManager::musicSounds
-	SoundU5BU5D_t72FB050B36D0242C25330F8F4AC115C91598A1F5* ___musicSounds_7;
+	SoundU5BU5D_t72FB050B36D0242C25330F8F4AC115C91598A1F5* ___musicSounds_6;
 	// Sound[] AudioManager::sfxSound
-	SoundU5BU5D_t72FB050B36D0242C25330F8F4AC115C91598A1F5* ___sfxSound_8;
+	SoundU5BU5D_t72FB050B36D0242C25330F8F4AC115C91598A1F5* ___sfxSound_7;
 	// UnityEngine.AudioSource AudioManager::musicSource
-	AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299* ___musicSource_9;
+	AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299* ___musicSource_8;
 	// UnityEngine.AudioSource AudioManager::sfxSource
-	AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299* ___sfxSource_10;
-};
-
-struct AudioManager_t4BE66A4A0E184D85AF74C37BC93BFBEC52953C7B_StaticFields
-{
-	// AudioManager AudioManager::Instance
-	AudioManager_t4BE66A4A0E184D85AF74C37BC93BFBEC52953C7B* ___Instance_6;
+	AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299* ___sfxSource_9;
 };
 
 // UnityEngine.EventSystems.BaseInputModule
@@ -21130,13 +21124,13 @@ IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable4190[6] =
 	static_cast<int32_t>(offsetof(SimpleSpawner_tB3EDBE5354922EF7E6C283BB1FFB03F31B7188A8, ___poolName_4)),static_cast<int32_t>(offsetof(SimpleSpawner_tB3EDBE5354922EF7E6C283BB1FFB03F31B7188A8, ___testPrefab_5)),static_cast<int32_t>(offsetof(SimpleSpawner_tB3EDBE5354922EF7E6C283BB1FFB03F31B7188A8, ___spawnAmount_6)),static_cast<int32_t>(offsetof(SimpleSpawner_tB3EDBE5354922EF7E6C283BB1FFB03F31B7188A8, ___spawnInterval_7)),static_cast<int32_t>(offsetof(SimpleSpawner_tB3EDBE5354922EF7E6C283BB1FFB03F31B7188A8, ___particlesPoolName_8)),static_cast<int32_t>(offsetof(SimpleSpawner_tB3EDBE5354922EF7E6C283BB1FFB03F31B7188A8, ___particleSystemPrefab_9)),};
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable4191[1] = 
 {
-	static_cast<int32_t>(offsetof(U3CU3Ec__DisplayClass6_0_t181AAFA51155A93676051B979945909777364917, ___name_0)),};
+	static_cast<int32_t>(offsetof(U3CU3Ec__DisplayClass5_0_tDD85608198A296C2C97868D289F0F35ECD9FB367, ___name_0)),};
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable4192[1] = 
 {
-	static_cast<int32_t>(offsetof(U3CU3Ec__DisplayClass7_0_t20AE7DED8DD71264D66F1E31288F57F7077884C2, ___name_0)),};
-IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable4193[5] = 
+	static_cast<int32_t>(offsetof(U3CU3Ec__DisplayClass6_0_t181AAFA51155A93676051B979945909777364917, ___name_0)),};
+IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable4193[4] = 
 {
-	static_cast<int32_t>(offsetof(AudioManager_t4BE66A4A0E184D85AF74C37BC93BFBEC52953C7B_StaticFields, ___Instance_6)),static_cast<int32_t>(offsetof(AudioManager_t4BE66A4A0E184D85AF74C37BC93BFBEC52953C7B, ___musicSounds_7)),static_cast<int32_t>(offsetof(AudioManager_t4BE66A4A0E184D85AF74C37BC93BFBEC52953C7B, ___sfxSound_8)),static_cast<int32_t>(offsetof(AudioManager_t4BE66A4A0E184D85AF74C37BC93BFBEC52953C7B, ___musicSource_9)),static_cast<int32_t>(offsetof(AudioManager_t4BE66A4A0E184D85AF74C37BC93BFBEC52953C7B, ___sfxSource_10)),};
+	static_cast<int32_t>(offsetof(AudioManager_t4BE66A4A0E184D85AF74C37BC93BFBEC52953C7B, ___musicSounds_6)),static_cast<int32_t>(offsetof(AudioManager_t4BE66A4A0E184D85AF74C37BC93BFBEC52953C7B, ___sfxSound_7)),static_cast<int32_t>(offsetof(AudioManager_t4BE66A4A0E184D85AF74C37BC93BFBEC52953C7B, ___musicSource_8)),static_cast<int32_t>(offsetof(AudioManager_t4BE66A4A0E184D85AF74C37BC93BFBEC52953C7B, ___sfxSource_9)),};
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable4194[9] = 
 {
 	static_cast<int32_t>(offsetof(Fruit_tD2A93B9A01116EF11034410A2CCD5F0CFD28FEDB, ___id_4)),static_cast<int32_t>(offsetof(Fruit_tD2A93B9A01116EF11034410A2CCD5F0CFD28FEDB, ___score_5)),static_cast<int32_t>(offsetof(Fruit_tD2A93B9A01116EF11034410A2CCD5F0CFD28FEDB, ___nextLevelPrefab_6)),static_cast<int32_t>(offsetof(Fruit_tD2A93B9A01116EF11034410A2CCD5F0CFD28FEDB, ___OnLevelUp_7)),static_cast<int32_t>(offsetof(Fruit_tD2A93B9A01116EF11034410A2CCD5F0CFD28FEDB, ___OnGameOver_8)),static_cast<int32_t>(offsetof(Fruit_tD2A93B9A01116EF11034410A2CCD5F0CFD28FEDB, ___rigid_9)),static_cast<int32_t>(offsetof(Fruit_tD2A93B9A01116EF11034410A2CCD5F0CFD28FEDB, ___isTouchRedline_10)),static_cast<int32_t>(offsetof(Fruit_tD2A93B9A01116EF11034410A2CCD5F0CFD28FEDB, ___timer_11)),static_cast<int32_t>(offsetof(Fruit_tD2A93B9A01116EF11034410A2CCD5F0CFD28FEDB, ____fx_12)),};

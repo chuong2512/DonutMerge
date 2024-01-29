@@ -6,7 +6,6 @@ using ChuongCustom;
 
 public class AudioManager : PersistentSingleton<AudioManager>
 {
-    public static AudioManager Instance;
     public Sound[] musicSounds, sfxSound;
     public AudioSource musicSource, sfxSource;
     

@@ -406,14 +406,14 @@ extern void AudioManager_MusicVolume_m50D80F8C3328DC712AA127246CBE9D8E9B41E6B2 (
 extern void AudioManager_SfxVolume_m327E96B7076C395B41D3C9A0A4E31DE20E56B451 (void);
 // 0x000000C5 System.Void AudioManager::.ctor()
 extern void AudioManager__ctor_mA793A9DF6B975D03690B7C953972EFE41AE4D5E6 (void);
-// 0x000000C6 System.Void AudioManager/<>c__DisplayClass6_0::.ctor()
+// 0x000000C6 System.Void AudioManager/<>c__DisplayClass5_0::.ctor()
+extern void U3CU3Ec__DisplayClass5_0__ctor_m8C54CF0F0E5F074525DA04D415803917C3371E69 (void);
+// 0x000000C7 System.Boolean AudioManager/<>c__DisplayClass5_0::<PlayMusic>b__0(Sound)
+extern void U3CU3Ec__DisplayClass5_0_U3CPlayMusicU3Eb__0_m10092FE7B680F048F2830FD6887B7FEAE658BCE1 (void);
+// 0x000000C8 System.Void AudioManager/<>c__DisplayClass6_0::.ctor()
 extern void U3CU3Ec__DisplayClass6_0__ctor_m67ADEC061C6A1781C72DFC2A7AC2134C751AA940 (void);
-// 0x000000C7 System.Boolean AudioManager/<>c__DisplayClass6_0::<PlayMusic>b__0(Sound)
-extern void U3CU3Ec__DisplayClass6_0_U3CPlayMusicU3Eb__0_m9CED7C7127CF3BD5ADEDBB95AE2EC50CAFD6B827 (void);
-// 0x000000C8 System.Void AudioManager/<>c__DisplayClass7_0::.ctor()
-extern void U3CU3Ec__DisplayClass7_0__ctor_mE1303CB5114C4E9FBFCE8A99E5CAD205BDF1B572 (void);
-// 0x000000C9 System.Boolean AudioManager/<>c__DisplayClass7_0::<PlaySFX>b__0(Sound)
-extern void U3CU3Ec__DisplayClass7_0_U3CPlaySFXU3Eb__0_mED6CE72CE4CF15F6525A16DF34E7A7C85E4AF36F (void);
+// 0x000000C9 System.Boolean AudioManager/<>c__DisplayClass6_0::<PlaySFX>b__0(Sound)
+extern void U3CU3Ec__DisplayClass6_0_U3CPlaySFXU3Eb__0_mB6969F94BF732220085EC9BD1B3909A5B7B54CBB (void);
 // 0x000000CA System.Void Fruit::Update()
 extern void Fruit_Update_m6203C8EC6511E52DB146FD78D8F1276E6B734DC7 (void);
 // 0x000000CB System.Void Fruit::SetSimulated(System.Boolean)
@@ -1975,10 +1975,10 @@ static Il2CppMethodPointer s_methodPointers[904] =
 	AudioManager_MusicVolume_m50D80F8C3328DC712AA127246CBE9D8E9B41E6B2,
 	AudioManager_SfxVolume_m327E96B7076C395B41D3C9A0A4E31DE20E56B451,
 	AudioManager__ctor_mA793A9DF6B975D03690B7C953972EFE41AE4D5E6,
+	U3CU3Ec__DisplayClass5_0__ctor_m8C54CF0F0E5F074525DA04D415803917C3371E69,
+	U3CU3Ec__DisplayClass5_0_U3CPlayMusicU3Eb__0_m10092FE7B680F048F2830FD6887B7FEAE658BCE1,
 	U3CU3Ec__DisplayClass6_0__ctor_m67ADEC061C6A1781C72DFC2A7AC2134C751AA940,
-	U3CU3Ec__DisplayClass6_0_U3CPlayMusicU3Eb__0_m9CED7C7127CF3BD5ADEDBB95AE2EC50CAFD6B827,
-	U3CU3Ec__DisplayClass7_0__ctor_mE1303CB5114C4E9FBFCE8A99E5CAD205BDF1B572,
-	U3CU3Ec__DisplayClass7_0_U3CPlaySFXU3Eb__0_mED6CE72CE4CF15F6525A16DF34E7A7C85E4AF36F,
+	U3CU3Ec__DisplayClass6_0_U3CPlaySFXU3Eb__0_mB6969F94BF732220085EC9BD1B3909A5B7B54CBB,
 	Fruit_Update_m6203C8EC6511E52DB146FD78D8F1276E6B734DC7,
 	Fruit_SetSimulated_mFB2F4F45D7570EE5AD225F4D59EA8DA050BEA59B,
 	Fruit_PlayFx_m0E0DDAF07432FDA9055F0F53E8076675780F8805,

@@ -17,7 +17,7 @@ public class HomeUI : MonoBehaviour
 
     private void Start()
     {
-        _highScore.text = _dataManager.playerData.GetMapWithID(0).highScore.ToString();
+        _highScore.text =   PlayerPrefs.GetInt("highScore").ToString();
 
         _startBtn.onClick.AddListener(OnClickButton);
         _homeBtn.onClick.AddListener(OnClickButtonHome);

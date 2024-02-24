@@ -500,7 +500,7 @@ public class Game : Singleton<Game>
 
         fruits.Shuffle();
 
-        var count = Mathf.Min(4, fruits.Count);
+        var count = Mathf.Min(5, fruits.Count);
 
         for (int i = count - 1; i >= 0; i--)
         {

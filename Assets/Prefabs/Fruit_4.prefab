@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3108914378460111842}
   - component: {fileID: 6781766354321660305}
+  - component: {fileID: 5088157622184554025}
   m_Layer: 0
   m_Name: Asset 4@2xDonut_ (1)
   m_TagString: Untagged
@@ -84,6 +85,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5088157622184554025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2283748273973229460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a2b361c52aa49b4bd77f940940d43c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 4
 --- !u!1 &5332885909993360329
 GameObject:
   m_ObjectHideFlags: 0

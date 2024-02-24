@@ -13,9 +13,9 @@ namespace _Game.Scripts.Game
             _spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
-        protected void SetSkin(int skinID)
+        protected void SetSkin(int skinID, int level)
         {
-            
+            SetSkin(SkinManager.SkinData(skinID)[level]);
         }
         
         protected void SetSkin(Sprite sprite)

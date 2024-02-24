@@ -143,7 +143,7 @@ public class PlayerData : BaseData
 
     public void ChooseBG(int BGID)
     {
-        choosingSkin = BGID;
+        choosingBG = BGID;
     }
 
     public void AddBG(int BGID)

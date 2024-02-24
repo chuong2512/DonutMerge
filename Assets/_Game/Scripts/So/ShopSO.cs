@@ -11,7 +11,7 @@ namespace ChuongCustom
         public SkinData[] Skins;
         public SkillData[] Skills;
 
-        public ShopData GetBGData(int ID)
+        public BgGameData GetBGData(int ID)
         {
             return BGs.ToList().Find(data => data.ID == ID);
         }
@@ -30,6 +30,7 @@ namespace ChuongCustom
     [Serializable]
     public class BgGameData : ShopData
     {
+        public Sprite bg;
     }
 
     [Serializable]

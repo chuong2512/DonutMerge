@@ -16,12 +16,15 @@ MonoBehaviour:
   - ID: 0
     image: {fileID: 21300000, guid: c67657a6d65b23d4bbcb70e1561a5308, type: 3}
     price: 0
+    bg: {fileID: 21300000, guid: f290bc2f25881a2438ae6725ceae49c0, type: 3}
   - ID: 1
     image: {fileID: 21300000, guid: bf3f7407ee16aca4e9746798e399f464, type: 3}
     price: 3000
+    bg: {fileID: 21300000, guid: 0c34f208f659ed942a045f4db1fb4900, type: 3}
   - ID: 2
     image: {fileID: 21300000, guid: 91914a503e9be9b4185084efc040f693, type: 3}
     price: 5000
+    bg: {fileID: 21300000, guid: 16ad98e6eb59fcb47a325ead24a74914, type: 3}
   Skins:
   - ID: 0
     image: {fileID: 21300000, guid: 398b87b644b259144b1474f57875a1b3, type: 3}

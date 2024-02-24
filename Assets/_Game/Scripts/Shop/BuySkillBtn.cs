@@ -5,9 +5,10 @@ using UnityEngine.UI;
 
 namespace ChuongCustom
 {
-    public class ShopCoinBtn : MonoBehaviour
+    public class BuySkillBtn : MonoBehaviour
     {
-        [SerializeField] private int _amount, _price;
+        [SerializeField] private int id = 0;
+        [SerializeField] private int _amount = 1, _price = 500;
         [SerializeField] private Button _button;
         [SerializeField] private Text _amountText, _priceText;
 
@@ -19,20 +20,21 @@ namespace ChuongCustom
 
             _button.onClick.AddListener(OnClickButton);
 
-            _amountText.text = $"x{_amount}";
-            _priceText.text = _price.ToString();
+            /*_amountText.text = $"x{_amount}";
+            _priceText.text = _price.ToString();*/
         }
 
         private void OnClickButton()
         {
-            if (_player.Gem >= _price)
+            if (_player.Coin >= _price)
             {
-                _player.Gem -= _price;
-                _player.Coin += _amount;
+                _player.Coin -= _price;
+                _player.AddNumberSkill(id, _amount);
+                ToastManager.Instance.ShowMessageToast("Buy Success!!");
             }
             else
             {
-                ToastManager.Instance.ShowWarningToast("Không đủ linh đan. Hãy nạp thêm.");
+                ToastManager.Instance.ShowMessageToast("Not enough coin!!");
             }
         }
     }

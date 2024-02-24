@@ -16,33 +16,16 @@ namespace ChuongCustom
 
         protected GameDataManager _gameData;
 
-        private void Start()
+        private void Awake()
         {
             _gameData = GameDataManager.Instance;
-
-            _button.onClick.AddListener(OnClickButton);
         }
 
         private void SetPrice()
         {
             price.SetText($"{GetPrice()} <sprite=0>");
         }
-
-        private void OnClickButton()
-        {
-            if (IsUnlock()) return;
-            if (_gameData.playerData.Coin >= GetPrice())
-            {
-                _gameData.playerData.Coin -= GetPrice();
-
-                UnlockItem();
-            }
-            else
-            {
-                ToastManager.Instance.ShowMessageToast("Tính năng sẽ sớm đc cập nhật");
-            }
-        }
-
+        
         protected abstract void SetImage();
         protected abstract void UnlockItem();
         protected abstract void ChooseItem();
@@ -82,9 +65,28 @@ namespace ChuongCustom
             SetImage();
             SetPrice();
 
-            lockObj.SetActive(IsUnlock());
+            lockObj.SetActive(!IsUnlock());
             
             onChooose.SetActive(IsChoosing());
+        }
+
+        public bool CheckLock()
+        {
+            if (IsUnlock()) return false;
+            
+            if (_gameData.playerData.Coin >= GetPrice())
+            {
+                _gameData.playerData.Coin -= GetPrice();
+                UnlockItem();
+                lockObj.SetActive(false);
+                ToastManager.Instance.ShowMessageToast("Unlocked!!");
+            }
+            else
+            {
+                ToastManager.Instance.ShowMessageToast("Not enough coin!!");
+            }
+
+            return true;
         }
     }
 }

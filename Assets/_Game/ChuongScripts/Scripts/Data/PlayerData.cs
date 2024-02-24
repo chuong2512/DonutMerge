@@ -23,7 +23,26 @@ public class PlayerData : BaseData
     public int choosingBG;
     public int choosingSkin;
 
-    public int numberSkill1, numberSkill2, numberSkill3;
+    private int[] numberSkill;
+
+    public int GetNumberSkill(int ID)
+    {
+        return numberSkill[ID];
+    }
+
+    public void AddNumberSkill(int ID, int amount)
+    {
+        numberSkill[ID] += amount;
+
+        Save();
+    }
+
+    public void MinusNumberSkill(int ID, int amount)
+    {
+        numberSkill[ID] -= amount;
+
+        Save();
+    }
 
     public int Coin
     {
@@ -115,12 +134,36 @@ public class PlayerData : BaseData
 
         choosingSkin = 0;
         choosingMap = 0;
+        numberSkill = new int[4];
 
-        numberSkill1 = 2;
-        numberSkill2 = 2;
-        numberSkill3 = 2;
+        for (int i = 0; i < numberSkill.Length; i++)
+        {
+            numberSkill[i] = 2;
+        }
 
         Save();
+    }
+
+    protected override void CheckAppendData()
+    {
+        base.CheckAppendData();
+
+        if (unlockedSkins == null || unlockedSkins == null)
+        {
+            unlockedSkins = new List<int> {0};
+            unlockedSkins = new List<int> {0};
+        }
+        
+        if (numberSkill is {Length: >= 4}) return;
+
+        numberSkill = new int[4];
+
+        for (int i = 0; i < numberSkill.Length; i++)
+        {
+            numberSkill[i] = 2;
+        }
+        
+      
     }
 
     public void ChooseSkin(int skinID)
@@ -143,20 +186,20 @@ public class PlayerData : BaseData
 
     public void ChooseBG(int BGID)
     {
-        choosingSkin = BGID;
+        choosingBG = BGID;
     }
 
     public void AddBG(int BGID)
     {
-        if (!unlockedSkins.Contains(BGID))
+        if (!unlockedBGs.Contains(BGID))
         {
-            unlockedSkins.Add(BGID);
+            unlockedBGs.Add(BGID);
         }
     }
 
     public bool CheckContainBG(int BGID)
     {
-        return unlockedSkins.Contains(BGID);
+        return unlockedBGs.Contains(BGID);
     }
 
     public bool IsUnlockMap(int mapID)

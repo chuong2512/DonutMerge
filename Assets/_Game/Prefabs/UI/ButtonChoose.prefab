@@ -350,7 +350,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _button: {fileID: 4349934393950148676}
   ID: 0
-  image: {fileID: 4349934393255535168}
+  image: {fileID: 4349934393950148731}
   onChooose: {fileID: 8929322895918232953}
   lockObj: {fileID: 4349934393255535171}
   price: {fileID: 4349934394318369876}

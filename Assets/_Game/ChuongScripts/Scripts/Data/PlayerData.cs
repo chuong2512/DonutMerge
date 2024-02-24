@@ -30,6 +30,11 @@ public class PlayerData : BaseData
         return numberSkill[ID];
     }
 
+    public int GetNumberSkill(SkillType type)
+    {
+        return numberSkill[(int) type];
+    }
+
     public void AddNumberSkill(int ID, int amount)
     {
         numberSkill[ID] += amount;
@@ -153,7 +158,7 @@ public class PlayerData : BaseData
             unlockedSkins = new List<int> {0};
             unlockedSkins = new List<int> {0};
         }
-        
+
         if (numberSkill is {Length: >= 4}) return;
 
         numberSkill = new int[4];
@@ -162,8 +167,6 @@ public class PlayerData : BaseData
         {
             numberSkill[i] = 2;
         }
-        
-      
     }
 
     public void ChooseSkin(int skinID)

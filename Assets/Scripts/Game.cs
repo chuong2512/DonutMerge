@@ -1,12 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
+using _Game.Scripts.Utils;
 using ChuongCustom;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
+using JetBrains.Annotations;
 
-public class Game : MonoBehaviour
+public enum SkillType
+{
+    Destroy = 0,
+    X2,
+    Roll,
+    Hammer
+}
+
+public class Game : Singleton<Game>
 {
     public List<Fruit> fruitPrefabList;
     public Transform spawnPoint;
@@ -25,7 +35,9 @@ public class Game : MonoBehaviour
     private List<Fruit> fruits = new List<Fruit>();
 
     public TextMeshProUGUI x2Text, HammerText;
+    public TextMeshProUGUI rollText, destroyText;
     private int X2Count, HammerCount;
+    private int rollCount, destroyCount;
     public GameObject AdHammer, AdX2;
 
     private Item _itemSpawn;
@@ -44,13 +56,17 @@ public class Game : MonoBehaviour
     private float _count;
     private float _deltaSpawnTime = 0.5f;
 
+    private GameDataManager _gameData;
+
     void Start()
     {
+        _gameData = GameDataManager.Instance;
+        
         fruit = SpawnNextFruit();
         CheckHighScore();
         CheckTotalCoin();
         CheckInfo();
-
+        
         float _sound = PlayerPrefs.GetFloat("SfxVolume");
         float _music = PlayerPrefs.GetFloat("MusicVolume");
         _musicSlider.value = _music;
@@ -59,10 +75,18 @@ public class Game : MonoBehaviour
 
     private void CheckInfo()
     {
-        X2Count = PlayerPrefs.GetInt("numX2", 10);
+        X2Count = _gameData.playerData.GetNumberSkill(SkillType.X2);
         x2Text.text = "" + X2Count;
-        HammerCount = PlayerPrefs.GetInt("numHammer", 10);
+
+        HammerCount = _gameData.playerData.GetNumberSkill(SkillType.Hammer);
         HammerText.text = "" + HammerCount;
+
+        rollCount = _gameData.playerData.GetNumberSkill(SkillType.Roll);
+        rollText.text = "" + rollCount;
+
+        destroyCount = _gameData.playerData.GetNumberSkill(SkillType.Destroy);
+        destroyText.text = "" + destroyCount;
+
         AdHammer.SetActive(false);
         AdX2.SetActive(false);
     }
@@ -339,14 +363,14 @@ public class Game : MonoBehaviour
     public void RemoveHammer()
     {
         HammerCount -= 1;
-        PlayerPrefs.SetInt("numHammer", HammerCount);
+        _gameData.playerData.MinusNumberSkill((int) SkillType.Hammer, 1);
         CheckInfo();
     }
 
     public void RemoveX2()
     {
         X2Count -= 1;
-        PlayerPrefs.SetInt("numX2", X2Count);
+        _gameData.playerData.MinusNumberSkill((int) SkillType.X2, 1);
         CheckInfo();
     }
 
@@ -430,6 +454,52 @@ public class Game : MonoBehaviour
             PlayerPrefs.SetInt("numX2", 5);
             CheckInfo();
         }
+    }
+
+    public void ClickRoll()
+    {
+        for (int i = 0; i < fruits.Count; i++)
+        {
+            var f = fruits[i];
+
+            SpawnRandomFruit(f.transform.position);
+
+            fruits.Remove(f);
+            Destroy(f);
+        }
+
+        _gameData.playerData.MinusNumberSkill((int) SkillType.Roll, 1);
+        CheckInfo();
+    }
+
+    private void SpawnRandomFruit(Vector3 transformPosition)
+    {
+        var rand = Random.Range(0, 5);
+        var prefab = fruitPrefabList[rand].gameObject;
+
+        SpawnFruit(prefab, transformPosition);
+    }
+
+    public void ClickDestroy()
+    {
+        if (fruits == null)
+        {
+            return;
+        }
+
+        fruits.Shuffle();
+
+        var count = Mathf.Min(4, fruits.Count);
+
+        for (int i = 0; i < count; i++)
+        {
+            var f = fruits[i];
+            fruits.Remove(f);
+            Destroy(f);
+        }
+
+        _gameData.playerData.MinusNumberSkill((int) SkillType.Destroy, 1);
+        CheckInfo();
     }
 
     public void BackToHome()

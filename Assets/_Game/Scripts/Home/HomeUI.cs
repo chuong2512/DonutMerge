@@ -12,6 +12,7 @@ public class HomeUI : MonoBehaviour
     [SerializeField] private Button _homeBtn, _shopBtn;
 
     [SerializeField] private TextMeshProUGUI _highScore;
+    [SerializeField] private ShopPanel _shopPanel;
 
     private GameDataManager _dataManager => GameDataManager.Instance;
 
@@ -26,13 +27,15 @@ public class HomeUI : MonoBehaviour
 
     private void OnClickButtonShop()
     {
-        ToastManager.Instance.ShowMessageToast("Tính năng sẽ sớm đc cập nhật");
+        //ToastManager.Instance.ShowMessageToast("Tính năng sẽ sớm đc cập nhật");
         //ScreenManager.Instance.OpenScreen(ScreenType.SHOP);
+        _shopPanel.Open();
     }
 
     private void OnClickButtonHome()
     {
         ScreenManager.Instance.OpenScreen(ScreenType.HomeScreen);
+        _shopPanel.Close();
     }
 
     private void OnClickButton()

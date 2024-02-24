@@ -18,6 +18,8 @@ namespace ChuongCustom
         /*----Data variable-------------------------------------------------------------------------------------------------*/
         [HideInInspector] public PlayerData playerData;
         [HideInInspector] public SettingData settingData;
+        
+        public ShopSO ShopSo;
 
         private void OnEnable()
         {

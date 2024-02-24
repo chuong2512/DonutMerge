@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1c2c2af248941318ff2bb97a98803bf, type: 3}
+  m_Name: Data Shop
+  m_EditorClassIdentifier: 
+  BGs:
+  - ID: 0
+    image: {fileID: 21300000, guid: c67657a6d65b23d4bbcb70e1561a5308, type: 3}
+    price: 0
+  - ID: 1
+    image: {fileID: 21300000, guid: bf3f7407ee16aca4e9746798e399f464, type: 3}
+    price: 3000
+  - ID: 2
+    image: {fileID: 21300000, guid: 91914a503e9be9b4185084efc040f693, type: 3}
+    price: 5000
+  Skins:
+  - ID: 0
+    image: {fileID: 21300000, guid: 398b87b644b259144b1474f57875a1b3, type: 3}
+    price: 0
+  - ID: 1
+    image: {fileID: 21300000, guid: 835add603b01c4f47a10ff094f7c4a8e, type: 3}
+    price: 3000
+  - ID: 2
+    image: {fileID: 21300000, guid: b055cd0931bcfae41b5e920342cfcb9e, type: 3}
+    price: 5000
+  Skills: []

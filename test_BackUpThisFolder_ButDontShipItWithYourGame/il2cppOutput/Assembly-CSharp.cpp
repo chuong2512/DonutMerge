@@ -8405,8 +8405,6 @@ inline void Singleton_1__ctor_mD1C88E77BA6ADA0A8680E1FCA86493D00A20F98A (Singlet
 {
 	((  void (*) (Singleton_1_t1A6D89C8CC87568101E21D025FFF355A24AF8A2F*, const RuntimeMethod*))Singleton_1__ctor_m8230F61FF1AF3F44D24A58A26B6B667F5FF130B0_gshared)(__this, method);
 }
-// ChuongCustom.GameDataManager HomeUI::get__dataManager()
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameDataManager_tB6F8EC509A28FEE005B4F5186AAC56AE289BC372* HomeUI_get__dataManager_m3B9941FF2C7B3262C5E8BB1C694BEE6325A7792B (HomeUI_t7E31B3980E396A8B5693232BC34975C86115E64B* __this, const RuntimeMethod* method) ;
 // T ChuongCustom.Singleton`1<ToastManager>::get_Instance()
 inline ToastManager_t111D9CC954C5593A334ACBB15C890CAA05F0C2EF* Singleton_1_get_Instance_m17D5EE20B8A1AB8678FA9350A328A5DF3369B545 (const RuntimeMethod* method)
 {
@@ -24271,54 +24269,50 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void HomeUI_Start_m6807E37535457A64D919C03337
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&HomeUI_OnClickButtonShop_m18D566CAEC49E6A80A0092E2E9A7C69FD697A94D_RuntimeMethod_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&HomeUI_OnClickButton_mD287CD89BA9532B0C907C8D767B0742AB4EFB38D_RuntimeMethod_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&UnityAction_t11A1F3B953B365C072A5DCC32677EE1796A962A7_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral8F07CFBBDA40C542D4605E2A39F686185F29E858);
 		s_Il2CppMethodInitialized = true;
 	}
+	int32_t V_0 = 0;
 	{
-		// _highScore.text = _dataManager.playerData.GetMapWithID(0).highScore.ToString();
+		// _highScore.text =   PlayerPrefs.GetInt("highScore").ToString();
 		TextMeshProUGUI_t101091AF4B578BB534C92E9D1EEAF0611636D957* L_0 = __this->____highScore_7;
-		GameDataManager_tB6F8EC509A28FEE005B4F5186AAC56AE289BC372* L_1;
-		L_1 = HomeUI_get__dataManager_m3B9941FF2C7B3262C5E8BB1C694BEE6325A7792B(__this, NULL);
-		NullCheck(L_1);
-		PlayerData_t04178AFFCFAF35DA6472B839034F672FFE5EB64A* L_2 = L_1->___playerData_6;
-		NullCheck(L_2);
-		MapRecord_t1E733B23B52CC15F3B6919F3AE054C62C4E9C9FE* L_3;
-		L_3 = PlayerData_GetMapWithID_m330B9830DDA6CCC979D8B74A17A961DC2079B66D(L_2, 0, NULL);
-		NullCheck(L_3);
-		int32_t* L_4 = (&L_3->___highScore_1);
-		String_t* L_5;
-		L_5 = Int32_ToString_m030E01C24E294D6762FB0B6F37CB541581F55CA5(L_4, NULL);
+		int32_t L_1;
+		L_1 = PlayerPrefs_GetInt_m4D859DBEABAD3FB406C94485A0B2638A0C7F2987(_stringLiteral8F07CFBBDA40C542D4605E2A39F686185F29E858, NULL);
+		V_0 = L_1;
+		String_t* L_2;
+		L_2 = Int32_ToString_m030E01C24E294D6762FB0B6F37CB541581F55CA5((&V_0), NULL);
 		NullCheck(L_0);
-		VirtualActionInvoker1< String_t* >::Invoke(66 /* System.Void TMPro.TMP_Text::set_text(System.String) */, L_0, L_5);
+		VirtualActionInvoker1< String_t* >::Invoke(66 /* System.Void TMPro.TMP_Text::set_text(System.String) */, L_0, L_2);
 		// _startBtn.onClick.AddListener(OnClickButton);
-		Button_t6786514A57F7AFDEE5431112FEA0CAB24F5AE098* L_6 = __this->____startBtn_4;
+		Button_t6786514A57F7AFDEE5431112FEA0CAB24F5AE098* L_3 = __this->____startBtn_4;
+		NullCheck(L_3);
+		ButtonClickedEvent_t8EA72E90B3BD1392FB3B3EF167D5121C23569E4C* L_4;
+		L_4 = Button_get_onClick_m701712A7F7F000CC80D517C4510697E15722C35C_inline(L_3, NULL);
+		UnityAction_t11A1F3B953B365C072A5DCC32677EE1796A962A7* L_5 = (UnityAction_t11A1F3B953B365C072A5DCC32677EE1796A962A7*)il2cpp_codegen_object_new(UnityAction_t11A1F3B953B365C072A5DCC32677EE1796A962A7_il2cpp_TypeInfo_var);
+		NullCheck(L_5);
+		UnityAction__ctor_mC53E20D6B66E0D5688CD81B88DBB34F5A58B7131(L_5, __this, (intptr_t)((void*)HomeUI_OnClickButton_mD287CD89BA9532B0C907C8D767B0742AB4EFB38D_RuntimeMethod_var), NULL);
+		NullCheck(L_4);
+		UnityEvent_AddListener_m8AA4287C16628486B41DA41CA5E7A856A706D302(L_4, L_5, NULL);
+		// _homeBtn.onClick.AddListener(OnClickButtonHome);
+		Button_t6786514A57F7AFDEE5431112FEA0CAB24F5AE098* L_6 = __this->____homeBtn_5;
 		NullCheck(L_6);
 		ButtonClickedEvent_t8EA72E90B3BD1392FB3B3EF167D5121C23569E4C* L_7;
 		L_7 = Button_get_onClick_m701712A7F7F000CC80D517C4510697E15722C35C_inline(L_6, NULL);
 		UnityAction_t11A1F3B953B365C072A5DCC32677EE1796A962A7* L_8 = (UnityAction_t11A1F3B953B365C072A5DCC32677EE1796A962A7*)il2cpp_codegen_object_new(UnityAction_t11A1F3B953B365C072A5DCC32677EE1796A962A7_il2cpp_TypeInfo_var);
 		NullCheck(L_8);
-		UnityAction__ctor_mC53E20D6B66E0D5688CD81B88DBB34F5A58B7131(L_8, __this, (intptr_t)((void*)HomeUI_OnClickButton_mD287CD89BA9532B0C907C8D767B0742AB4EFB38D_RuntimeMethod_var), NULL);
+		UnityAction__ctor_mC53E20D6B66E0D5688CD81B88DBB34F5A58B7131(L_8, __this, (intptr_t)((void*)HomeUI_OnClickButtonHome_m32575C4242423DA32FC140CFDD42C2779A3FFE0A_RuntimeMethod_var), NULL);
 		NullCheck(L_7);
 		UnityEvent_AddListener_m8AA4287C16628486B41DA41CA5E7A856A706D302(L_7, L_8, NULL);
-		// _homeBtn.onClick.AddListener(OnClickButtonHome);
-		Button_t6786514A57F7AFDEE5431112FEA0CAB24F5AE098* L_9 = __this->____homeBtn_5;
+		// _shopBtn.onClick.AddListener(OnClickButtonShop);
+		Button_t6786514A57F7AFDEE5431112FEA0CAB24F5AE098* L_9 = __this->____shopBtn_6;
 		NullCheck(L_9);
 		ButtonClickedEvent_t8EA72E90B3BD1392FB3B3EF167D5121C23569E4C* L_10;
 		L_10 = Button_get_onClick_m701712A7F7F000CC80D517C4510697E15722C35C_inline(L_9, NULL);
 		UnityAction_t11A1F3B953B365C072A5DCC32677EE1796A962A7* L_11 = (UnityAction_t11A1F3B953B365C072A5DCC32677EE1796A962A7*)il2cpp_codegen_object_new(UnityAction_t11A1F3B953B365C072A5DCC32677EE1796A962A7_il2cpp_TypeInfo_var);
 		NullCheck(L_11);
-		UnityAction__ctor_mC53E20D6B66E0D5688CD81B88DBB34F5A58B7131(L_11, __this, (intptr_t)((void*)HomeUI_OnClickButtonHome_m32575C4242423DA32FC140CFDD42C2779A3FFE0A_RuntimeMethod_var), NULL);
+		UnityAction__ctor_mC53E20D6B66E0D5688CD81B88DBB34F5A58B7131(L_11, __this, (intptr_t)((void*)HomeUI_OnClickButtonShop_m18D566CAEC49E6A80A0092E2E9A7C69FD697A94D_RuntimeMethod_var), NULL);
 		NullCheck(L_10);
 		UnityEvent_AddListener_m8AA4287C16628486B41DA41CA5E7A856A706D302(L_10, L_11, NULL);
-		// _shopBtn.onClick.AddListener(OnClickButtonShop);
-		Button_t6786514A57F7AFDEE5431112FEA0CAB24F5AE098* L_12 = __this->____shopBtn_6;
-		NullCheck(L_12);
-		ButtonClickedEvent_t8EA72E90B3BD1392FB3B3EF167D5121C23569E4C* L_13;
-		L_13 = Button_get_onClick_m701712A7F7F000CC80D517C4510697E15722C35C_inline(L_12, NULL);
-		UnityAction_t11A1F3B953B365C072A5DCC32677EE1796A962A7* L_14 = (UnityAction_t11A1F3B953B365C072A5DCC32677EE1796A962A7*)il2cpp_codegen_object_new(UnityAction_t11A1F3B953B365C072A5DCC32677EE1796A962A7_il2cpp_TypeInfo_var);
-		NullCheck(L_14);
-		UnityAction__ctor_mC53E20D6B66E0D5688CD81B88DBB34F5A58B7131(L_14, __this, (intptr_t)((void*)HomeUI_OnClickButtonShop_m18D566CAEC49E6A80A0092E2E9A7C69FD697A94D_RuntimeMethod_var), NULL);
-		NullCheck(L_13);
-		UnityEvent_AddListener_m8AA4287C16628486B41DA41CA5E7A856A706D302(L_13, L_14, NULL);
 		// }
 		return;
 	}

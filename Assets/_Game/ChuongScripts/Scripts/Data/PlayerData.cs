@@ -11,11 +11,19 @@ public class PlayerData : BaseData
 
     public int choosingMap;
     public List<MapRecord> mapUnlocks;
-
     public float time;
     public string timeRegister;
 
     public bool isRate;
+
+    //donut game data 
+    public List<int> unlockedBGs;
+    public List<int> unlockedSkins;
+
+    public int choosingBG;
+    public int choosingSkin;
+
+    public int numberSkill1, numberSkill2, numberSkill3;
 
     public int Coin
     {
@@ -101,7 +109,54 @@ public class PlayerData : BaseData
             highScore = 0
         });
 
+        //donut data
+        unlockedSkins = new List<int> {0};
+        unlockedBGs = new List<int> {0};
+
+        choosingSkin = 0;
+        choosingMap = 0;
+
+        numberSkill1 = 2;
+        numberSkill2 = 2;
+        numberSkill3 = 2;
+
         Save();
+    }
+
+    public void ChooseSkin(int skinID)
+    {
+        choosingSkin = skinID;
+    }
+
+    public void AddSkin(int skinID)
+    {
+        if (!unlockedSkins.Contains(skinID))
+        {
+            unlockedSkins.Add(skinID);
+        }
+    }
+
+    public bool CheckContainSkin(int skinID)
+    {
+        return unlockedSkins.Contains(skinID);
+    }
+
+    public void ChooseBG(int BGID)
+    {
+        choosingSkin = BGID;
+    }
+
+    public void AddBG(int BGID)
+    {
+        if (!unlockedSkins.Contains(BGID))
+        {
+            unlockedSkins.Add(BGID);
+        }
+    }
+
+    public bool CheckContainBG(int BGID)
+    {
+        return unlockedSkins.Contains(BGID);
     }
 
     public bool IsUnlockMap(int mapID)

@@ -435,7 +435,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 218b1b4fd342c03479553c8bf1b35cb2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d1478c6a49b2a0f4aa761d60993d7d7b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -596,13 +596,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 98788a3d3489a413bb4af07031adf7ae, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2dcf82aa269bc0240b550f30adebabaa, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -720,6 +720,8 @@ MonoBehaviour:
   score: 0
   x2Text: {fileID: 1803671553}
   HammerText: {fileID: 1816730260}
+  rollText: {fileID: 962406752}
+  destroyText: {fileID: 516817052}
   AdHammer: {fileID: 1408668291}
   AdX2: {fileID: 1740917263}
   GameOverPanel: {fileID: 2104344507}
@@ -3341,13 +3343,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 98788a3d3489a413bb4af07031adf7ae, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fe099e50da5bfc3439cc288374cf7e5d, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -3729,7 +3731,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 155207281}
         m_TargetAssemblyTypeName: Game, Assembly-CSharp
-        m_MethodName: ClickX2Btn
+        m_MethodName: ClickDestroy
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4367,7 +4369,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 155207281}
         m_TargetAssemblyTypeName: Game, Assembly-CSharp
-        m_MethodName: ClickX2Btn
+        m_MethodName: ClickRoll
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5168,7 +5170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -10586,7 +10588,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

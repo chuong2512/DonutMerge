@@ -23,7 +23,7 @@ public class PlayerData : BaseData
     public int choosingBG;
     public int choosingSkin;
 
-    private int[] numberSkill;
+    public int[] numberSkill;
 
     public int GetNumberSkill(int ID)
     {
@@ -167,6 +167,8 @@ public class PlayerData : BaseData
         {
             numberSkill[i] = 2;
         }
+        
+        Save();
     }
 
     public void ChooseSkin(int skinID)

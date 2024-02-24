@@ -61,12 +61,12 @@ public class Game : Singleton<Game>
     void Start()
     {
         _gameData = GameDataManager.Instance;
-        
+
         fruit = SpawnNextFruit();
         CheckHighScore();
         CheckTotalCoin();
         CheckInfo();
-        
+
         float _sound = PlayerPrefs.GetFloat("SfxVolume");
         float _music = PlayerPrefs.GetFloat("MusicVolume");
         _musicSlider.value = _music;
@@ -458,15 +458,24 @@ public class Game : Singleton<Game>
 
     public void ClickRoll()
     {
-        for (int i = 0; i < fruits.Count; i++)
+        var listPos = new List<Vector3>();
+
+        var count = fruits.Count;
+
+        for (int i = count - 1; i >= 0; i--)
         {
             var f = fruits[i];
 
-            SpawnRandomFruit(f.transform.position);
-
-            fruits.Remove(f);
-            Destroy(f);
+            listPos.Add(f.transform.position);
+            RemoveFruit(f);
         }
+
+        for (int i = 0; i < listPos.Count - 1; i++)
+        {
+            SpawnRandomFruit(listPos[i]);
+        }
+        
+        fruit = SpawnNextFruit();
 
         _gameData.playerData.MinusNumberSkill((int) SkillType.Roll, 1);
         CheckInfo();
@@ -474,15 +483,17 @@ public class Game : Singleton<Game>
 
     private void SpawnRandomFruit(Vector3 transformPosition)
     {
-        var rand = Random.Range(0, 5);
+        var rand = Random.Range(0, 6);
         var prefab = fruitPrefabList[rand].gameObject;
 
-        SpawnFruit(prefab, transformPosition);
+        var f = SpawnFruit(prefab, transformPosition);
+        f.SetSimulated(true);
+        f.PlayFx();
     }
 
     public void ClickDestroy()
     {
-        if (fruits == null)
+        if (fruits == null || fruits.Count == 0)
         {
             return;
         }
@@ -491,13 +502,15 @@ public class Game : Singleton<Game>
 
         var count = Mathf.Min(4, fruits.Count);
 
-        for (int i = 0; i < count; i++)
+        for (int i = count - 1; i >= 0; i--)
         {
             var f = fruits[i];
-            fruits.Remove(f);
-            Destroy(f);
+            f.PlayFx();
+            RemoveFruit(f);
         }
 
+        fruit = SpawnNextFruit();
+        
         _gameData.playerData.MinusNumberSkill((int) SkillType.Destroy, 1);
         CheckInfo();
     }

@@ -1,16 +1,17 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace ChuongCustom
 {
-    public class ShopGemBtn : MonoBehaviour
+    public class BuyCoinBtn : MonoBehaviour
     {
-        [SerializeField] private string package_id = "buy_linh_dan_tnk_1";
+        [SerializeField] private string package_id = "mua_vang_goi_1";
 
         [SerializeField] private int _amount;
         [SerializeField] private float _price;
         [SerializeField] private Button _button;
-        [SerializeField] private Text _amountText, _priceText;
+        [SerializeField] private TextMeshProUGUI _amountText, _priceText;
 
         private PlayerData _player;
 
@@ -21,7 +22,7 @@ namespace ChuongCustom
             _button.onClick.AddListener(OnClickButton);
 
             _amountText.text = $"x{_amount}";
-            _priceText.text = $"$ {_price}";
+            /*_priceText.text = $"$ {_price}";*/
         }
 
         private void OnClickButton()
@@ -32,7 +33,7 @@ namespace ChuongCustom
 
         private void AddGem()
         {
-            _player.Gem += _amount;
+            _player.Coin += _amount;
         }
     }
 }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6039406654917043841}
   - component: {fileID: 6039406654917043840}
   - component: {fileID: 6039406654917043847}
+  - component: {fileID: 4784721824143231818}
   m_Layer: 5
   m_Name: ButtonShopSkill
   m_TagString: Untagged
@@ -122,6 +123,24 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4784721824143231818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6039406654917043845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e03dba71621184b9492b5a6b4187c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  _amount: 1
+  _price: 500
+  _button: {fileID: 6039406654917043847}
+  _amountText: {fileID: 0}
+  _priceText: {fileID: 0}
 --- !u!1 &6039406655928985952
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,7 +20,7 @@ namespace ChuongCustom
 
         private void ChooseButton(int tabID)
         {
-            if (!chooseBtns[tabID].IsUnlock())
+            if (chooseBtns[tabID].CheckLock())
             {
                 return;
             }

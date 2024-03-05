@@ -8,6 +8,9 @@ public class AudioManager : PersistentSingleton<AudioManager>
 {
     public Sound[] musicSounds, sfxSound;
     public AudioSource musicSource, sfxSource;
+
+    public bool CheckSound => !musicSource.mute;
+    public bool CheckSFX => !sfxSource.mute;
     
     private void Start()
     {

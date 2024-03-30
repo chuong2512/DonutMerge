@@ -458,6 +458,11 @@ public class Game : Singleton<Game>
 
     public void ClickRoll()
     {
+        if (rollCount <= 0)
+        {
+            return;
+        }
+
         var listPos = new List<Vector3>();
 
         var count = fruits.Count;
@@ -493,6 +498,11 @@ public class Game : Singleton<Game>
 
     public void ClickDestroy()
     {
+        if (destroyCount <= 0)
+        {
+            return;
+        }
+        
         if (fruits == null || fruits.Count == 0)
         {
             return;

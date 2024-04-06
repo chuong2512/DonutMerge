@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using ChuongCustom;
+using Samsung;
 using UnityEngine;
 using UnityEngine.Purchasing;
 using UnityEngine.Purchasing.Security;
@@ -26,41 +27,78 @@ public class IAPManager : PersistentSingleton<IAPManager>, IStoreListener
     private void Start()
     {
         InitIAP();
+
+        SamsungIAP.Instance.GetProductsDetails("add10coins, add50coins, add100coins, add200coins", null);
+
+        SamsungIAP.Instance.GetOwnedList(ItemType.all, OnGetOwnedList);
+    }
+
+    void OnGetOwnedList(OwnedProductList _ownedProductList)
+    {
+        if (_ownedProductList.errorInfo != null)
+        {
+            if (_ownedProductList.errorInfo.errorCode == 0)
+            {
+                // 0 means no error
+                if (_ownedProductList.results != null)
+                {
+                    foreach (OwnedProductVo item in _ownedProductList.results)
+                    {
+                        //consume the consumable items and OnConsume callback is triggered afterwards
+                        SamsungIAP.Instance.ConsumePurchasedItems(item.mPurchaseId, OnConsume);
+                    }
+                }
+            }
+        }
+    }
+    
+    void OnConsume(ConsumedList _consumedList){
+        if(_consumedList.errorInfo != null){
+            if(_consumedList.errorInfo.errorCode == 0){
+                if(_consumedList.results != null){
+                    foreach(ConsumeVo item in _consumedList.results){
+                        if(item.mStatusCode == 0){
+                            //successfully consumed and ready to be purchased again.
+                            SamsungIAP.Instance.ConsumePurchasedItems(item.mPurchaseId, null);
+                        }
+                    }
+                }
+            }
+        }
     }
 
     private void InitIAP()
-    {
-        if (storeController == null)
         {
-            InitProduct();
-        }
-    }
-
-    private void InitProduct()
-    {
-        if (IsInitialized())
-        {
-            return;
+            if (storeController == null)
+            {
+                InitProduct();
+            }
         }
 
-        var builder = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance());
+        private void InitProduct()
+        {
+            if (IsInitialized())
+            {
+                return;
+            }
 
-        builder.AddProduct(IAPKey.PACK1, ProductType.Consumable);
-        builder.AddProduct(IAPKey.PACK2, ProductType.Consumable);
-        builder.AddProduct(IAPKey.PACK3, ProductType.Consumable);
-        builder.AddProduct(IAPKey.PACK4, ProductType.Consumable);
-        builder.AddProduct(IAPKey.PACK5, ProductType.Consumable);
-        builder.AddProduct(IAPKey.PACK6, ProductType.Consumable);
+            var builder = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance());
 
-        UnityPurchasing.Initialize(this, builder);
-    }
+            builder.AddProduct(IAPKey.PACK1, ProductType.Consumable);
+            builder.AddProduct(IAPKey.PACK2, ProductType.Consumable);
+            builder.AddProduct(IAPKey.PACK3, ProductType.Consumable);
+            builder.AddProduct(IAPKey.PACK4, ProductType.Consumable);
+            builder.AddProduct(IAPKey.PACK5, ProductType.Consumable);
+            builder.AddProduct(IAPKey.PACK6, ProductType.Consumable);
+            UnityPurchasing.Initialize(this, builder);
+        }
 
-    public void BuyProductID(string productId)
-    {
-        _isBuyFromShop = true;
-
+        public void BuyProductID(string productId)
+        {
+            _isBuyFromShop = true;
+            
 #if UNITY_EDITOR
-        OnPurchaseComplete(productId);
+            OnPurchaseComplete(productId);
 #else
             // If Purchasing has been initialized ...
             if (IsInitialized())
@@ -85,160 +123,179 @@ public class IAPManager : PersistentSingleton<IAPManager>, IStoreListener
                 Debug.Log("BuyProductID FAIL. Not initialized.");
             }
 #endif
-    }
 
-    private bool IsInitialized()
-    {
-        // Only say we are initialized if both the Purchasing references are set.
-        return storeController != null && extensionProvider != null;
-        ;
-    }
-
-    public void OnPurchaseFailed(UnityEngine.Purchasing.Product product, PurchaseFailureReason failureReason)
-    {
-    }
-
-    public void OnInitialized(IStoreController controller, IExtensionProvider extensions)
-    {
-        // Purchasing has succeeded initializing. Collect our Purchasing references.
-        Debug.Log("OnInitialized: PASS");
-
-        // Overall Purchasing system, configured with products for this application.
-        storeController = controller;
-        // Store specific subsystem, for accessing device-specific store features.
-        extensionProvider = extensions;
-    }
-
-    public void RestorePurchases(System.Action<bool> OnRestored)
-    {
-        // If Purchasing has not yet been set up ...
-        if (!IsInitialized())
-        {
-            // ... report the situation and stop restoring. Consider either waiting longer, or retrying initialization.
-            Debug.Log("RestorePurchases FAIL. Not initialized.");
-            OnRestored?.Invoke(false);
-            return;
+            SamsungIAP.Instance.StartPayment(productId, "", OnPayment);
         }
 
-        // If we are running on an Apple device ... 
-        if (Application.platform == RuntimePlatform.IPhonePlayer ||
-            Application.platform == RuntimePlatform.OSXPlayer)
-        {
-            Debug.Log("RestorePurchases started ...");
+        void OnPayment(PurchasedInfo _purchaseInfo){
+            if(_purchaseInfo.errorInfo != null){
+                if(_purchaseInfo.errorInfo.errorCode == 0){
+                    if(_purchaseInfo.results != null){
+                        //your purchase is successful
+                        if(_purchaseInfo.results.mConsumableYN == "Y"){
+                            //consume the consumable items
+                            SamsungIAP.Instance.ConsumePurchasedItems(_purchaseInfo.results.mPurchaseId, OnConsume);
+                            OnPurchaseComplete("");
+                        }
+                    }
+                }
+            }
+        }
 
-            var apple = extensionProvider.GetExtension<IAppleExtensions>();
-            apple.RestoreTransactions((result) =>
+        private bool IsInitialized()
+        {
+            // Only say we are initialized if both the Purchasing references are set.
+            return storeController != null && extensionProvider != null;
+        }
+
+        public void OnInitialized(IStoreController controller, IExtensionProvider extensions)
+        {
+            // Purchasing has succeeded initializing. Collect our Purchasing references.
+            Debug.Log("OnInitialized: PASS");
+
+            // Overall Purchasing system, configured with products for this application.
+            storeController = controller;
+            // Store specific subsystem, for accessing device-specific store features.
+            extensionProvider = extensions;
+        }
+
+        public void RestorePurchases(System.Action<bool> OnRestored)
+        {
+            // If Purchasing has not yet been set up ...
+            if (!IsInitialized())
             {
-                Debug.Log("Transactions restored: " + (result ? "Succeed" : "Failed"));
-                OnRestored?.Invoke(result);
-            });
+                // ... report the situation and stop restoring. Consider either waiting longer, or retrying initialization.
+                Debug.Log("RestorePurchases FAIL. Not initialized.");
+                OnRestored?.Invoke(false);
+                return;
+            }
+
+            // If we are running on an Apple device ... 
+            if (Application.platform == RuntimePlatform.IPhonePlayer ||
+                Application.platform == RuntimePlatform.OSXPlayer)
+            {
+                Debug.Log("RestorePurchases started ...");
+
+                var apple = extensionProvider.GetExtension<IAppleExtensions>();
+                apple.RestoreTransactions((result) =>
+                {
+                    Debug.Log("Transactions restored: " + (result ? "Succeed" : "Failed"));
+                    OnRestored?.Invoke(result);
+                });
+            }
+            else
+            {
+                Debug.Log("RestorePurchases FAIL. Not supported on this platform. Current = " + Application.platform);
+                OnRestored?.Invoke(false);
+            }
         }
-        else
+
+        public void OnInitializeFailed(InitializationFailureReason error)
         {
-            Debug.Log("RestorePurchases FAIL. Not supported on this platform. Current = " + Application.platform);
-            OnRestored?.Invoke(false);
+            Debug.Log("OnInitializeFailed InitializationFailureReason:" + error);
         }
-    }
 
-    public void OnInitializeFailed(InitializationFailureReason error)
-    {
-        Debug.Log("OnInitializeFailed InitializationFailureReason:" + error);
-    }
+        public void OnInitializeFailed(InitializationFailureReason error, string message)
+        {
+        }
 
-    public void OnInitializeFailed(InitializationFailureReason error, string message)
-    {
-    }
+        public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs args)
+        {
+            bool validPurchase = true; // Presume valid for platforms with no R.V.
 
-    public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs args)
-    {
-        bool validPurchase = true; // Presume valid for platforms with no R.V.
-
-        // Unity IAP's validation logic is only included on these platforms.
+            // Unity IAP's validation logic is only included on these platforms.
 #if UNITY_ANDROID || UNITY_IOS || UNITY_STANDALONE_OSX
-        // Prepare the validator with the secrets we prepared in the Editor
-        // obfuscation window.
-        var validator = new CrossPlatformValidator(GooglePlayTangle.Data(), AppleTangle.Data(), Application.identifier);
-        try
-        {
-            // On Google Play, result has a single product ID.
-            // On Apple stores, receipts contain multiple products.
-            var result = validator.Validate(args.purchasedProduct.receipt);
-
-            // If Restore Purchase, handle it here and do not Log
-            if (!_isBuyFromShop)
+            // Prepare the validator with the secrets we prepared in the Editor
+            // obfuscation window.
+            var validator =
+                new CrossPlatformValidator(GooglePlayTangle.Data(), AppleTangle.Data(), Application.identifier);
+            try
             {
-                HandleRestorePurchase(args.purchasedProduct.definition.id);
-                return PurchaseProcessingResult.Complete;
-            }
+                // On Google Play, result has a single product ID.
+                // On Apple stores, receipts contain multiple products.
+                var result = validator.Validate(args.purchasedProduct.receipt);
 
-            // For informational purposes, we list the receipt(s)
-            Debug.Log("Receipt is valid. Contents:");
-            foreach (IPurchaseReceipt productReceipt in result)
-            {
-                Debug.Log(productReceipt.productID);
-                Debug.Log(productReceipt.purchaseDate);
-                Debug.Log(productReceipt.transactionID);
-
-                if (Application.platform == RuntimePlatform.Android)
+                // If Restore Purchase, handle it here and do not Log
+                if (!_isBuyFromShop)
                 {
-                    var googleReceipt = (GooglePlayReceipt) productReceipt;
-                    var pId = googleReceipt.productID;
-                    var metadata = storeController.products.WithID(pId).metadata;
+                    HandleRestorePurchase(args.purchasedProduct.definition.id);
+                    return PurchaseProcessingResult.Complete;
                 }
 
-                if (Application.platform == RuntimePlatform.IPhonePlayer)
+                // For informational purposes, we list the receipt(s)
+                Debug.Log("Receipt is valid. Contents:");
+                foreach (IPurchaseReceipt productReceipt in result)
                 {
-                    var appleReceipt = (AppleInAppPurchaseReceipt) productReceipt;
-                    var pId = appleReceipt.productID;
-                    var metadata = storeController.products.WithID(pId).metadata;
+                    Debug.Log(productReceipt.productID);
+                    Debug.Log(productReceipt.purchaseDate);
+                    Debug.Log(productReceipt.transactionID);
+
+                    if (Application.platform == RuntimePlatform.Android)
+                    {
+                        var googleReceipt = (GooglePlayReceipt) productReceipt;
+                        var pId = googleReceipt.productID;
+                        var metadata = storeController.products.WithID(pId).metadata;
+                    }
+
+                    if (Application.platform == RuntimePlatform.IPhonePlayer)
+                    {
+                        var appleReceipt = (AppleInAppPurchaseReceipt) productReceipt;
+                        var pId = appleReceipt.productID;
+                        var metadata = storeController.products.WithID(pId).metadata;
+                    }
                 }
             }
-        }
-        catch (IAPSecurityException)
-        {
-            Debug.Log("Invalid receipt, not unlocking content");
-            validPurchase = false;
-        }
+            catch (IAPSecurityException)
+            {
+                Debug.Log("Invalid receipt, not unlocking content");
+                validPurchase = false;
+            }
 #endif
 
-        _isBuyFromShop = false;
-        if (validPurchase)
-        {
-            // Unlock the appropriate content here.
-            OnPurchaseComplete(args.purchasedProduct.definition.id);
+            _isBuyFromShop = false;
+            if (validPurchase)
+            {
+                // Unlock the appropriate content here.
+                OnPurchaseComplete(args.purchasedProduct.definition.id);
+            }
+
+            // Return a flag indicating whether this product has completely been received, or if the application needs 
+            // to be reminded of this purchase at next app launch. Use PurchaseProcessingResult.Pending when still 
+            // saving purchased products to the cloud, and when that save is delayed. 
+            return PurchaseProcessingResult.Complete;
         }
 
-        // Return a flag indicating whether this product has completely been received, or if the application needs 
-        // to be reminded of this purchase at next app launch. Use PurchaseProcessingResult.Pending when still 
-        // saving purchased products to the cloud, and when that save is delayed. 
-        return PurchaseProcessingResult.Complete;
-    }
+        private void HandleRestorePurchase(string productId)
+        {
+            StartCoroutine(CoHandleRestore(productId));
+        }
 
-    private void HandleRestorePurchase(string productId)
-    {
-        StartCoroutine(CoHandleRestore(productId));
-    }
+        private void OnPurchaseComplete(string productId)
+        {
+            OnPurchaseSuccess?.Invoke();
+        }
 
-    private void OnPurchaseComplete(string productId)
-    {
-        OnPurchaseSuccess?.Invoke();
-    }
-
-    private void BuyPack()
-    {
-        //todo: buy pack
-    }
+        private void BuyPack()
+        {
+            //todo: buy pack
+        }
 
 
-    private IEnumerator CoHandleRestore(string productId)
-    {
-        yield return new WaitForSeconds(0.15f);
-    }
+        private IEnumerator CoHandleRestore(string productId)
+        {
+            yield return new WaitForSeconds(0.15f);
+        }
 
-    public static string GetLocalizePrice(string key, string defaultPriceText)
-    {
-        if (storeController != null)
-            return storeController.products.WithID(key).metadata.localizedPriceString;
-        return defaultPriceText;
+        public static string GetLocalizePrice(string key, string defaultPriceText)
+        {
+            if (storeController != null)
+                return storeController.products.WithID(key).metadata.localizedPriceString;
+            return defaultPriceText;
+        }
+
+        public void OnPurchaseFailed(Product product, PurchaseFailureReason failureReason)
+        {
+            Debug.Log(string.Format("OnPurchaseFailed: FAIL. Product: '{0}', PurchaseFailureReason: {1}",
+                product.definition.storeSpecificId, failureReason));
+        }
     }
-}

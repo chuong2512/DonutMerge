@@ -25,6 +25,8 @@ public class AudioManager : PersistentSingleton<AudioManager>
         float _music = PlayerPrefs.GetFloat("MusicVolume");
         musicSource.volume = _music;
         sfxSource.volume = _sound;
+        musicSource.mute = _music <= 0.1f;
+        sfxSource.mute = _sound <= 0.1f;
         PlayMusic("_background");
     }
 
@@ -58,20 +60,24 @@ public class AudioManager : PersistentSingleton<AudioManager>
     public void ToggleMusic()
     {
         musicSource.mute = !musicSource.mute;
+        MusicVolume(musicSource.mute ? 0f : 1f);
     }
 
     public void ToggleSfx()
     {
         sfxSource.mute = !sfxSource.mute;
+        SfxVolume(sfxSource.mute ? 0f : 1f);
     }
 
     public void MusicVolume(float volume)
     {
         musicSource.volume = volume;
+        PlayerPrefs.SetFloat("MusicVolume", volume);
     }
 
     public void SfxVolume(float volume)
     {
         sfxSource.volume = volume;
+        PlayerPrefs.SetFloat("SfxVolume", volume);
     }
 }

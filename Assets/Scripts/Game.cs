@@ -193,6 +193,11 @@ public class Game : Singleton<Game>
         GOverBestScore.text = "BEST: " + numHighScore;
         GOverScore.text = "" + score;
 
+#if UNITY_EDITOR
+        //todo REMOVE THIS
+        GameDataManager.Instance.playerData.Coin += score;
+#endif
+        
         PlayerPrefs.SetInt("totalCoin", PlayerPrefs.GetInt("totalCoin") + score);
         CheckTotalCoin();
         if (score > numHighScore)
@@ -384,8 +389,8 @@ public class Game : Singleton<Game>
     public void CloseSettingsPanel()
     {
         AudioManager.Instance.PlaySFX("_button");
-        PlayerPrefs.SetFloat("SfxVolume", _sfxSlider.value);
-        PlayerPrefs.SetFloat("MusicVolume", _musicSlider.value);
+        //PlayerPrefs.SetFloat("SfxVolume", _sfxSlider.value);
+        //PlayerPrefs.SetFloat("MusicVolume", _musicSlider.value);
         isSetting = false;
         SettingsPanel.SetActive(false);
     }

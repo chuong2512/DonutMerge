@@ -272,7 +272,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6004422521838522346, guid: d5c2965d516cfae40a37b02129a8f9cf, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6004422521838522346, guid: d5c2965d516cfae40a37b02129a8f9cf, type: 3}
       propertyPath: m_AnchorMin.x
@@ -280,7 +280,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6004422521838522346, guid: d5c2965d516cfae40a37b02129a8f9cf, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6004422521838522346, guid: d5c2965d516cfae40a37b02129a8f9cf, type: 3}
       propertyPath: m_SizeDelta.x
@@ -320,11 +320,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6004422521838522346, guid: d5c2965d516cfae40a37b02129a8f9cf, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 898.90283
       objectReference: {fileID: 0}
     - target: {fileID: 6004422521838522346, guid: d5c2965d516cfae40a37b02129a8f9cf, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -76.24
       objectReference: {fileID: 0}
     - target: {fileID: 6004422521838522346, guid: d5c2965d516cfae40a37b02129a8f9cf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -341,6 +341,10 @@ PrefabInstance:
     - target: {fileID: 6004422521838522347, guid: d5c2965d516cfae40a37b02129a8f9cf, type: 3}
       propertyPath: m_Name
       value: ButtonTab (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6004422521838522347, guid: d5c2965d516cfae40a37b02129a8f9cf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6004422522279904921, guid: d5c2965d516cfae40a37b02129a8f9cf, type: 3}
       propertyPath: m_text
@@ -4909,7 +4913,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 0
+  m_ChildAlignment: 4
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1

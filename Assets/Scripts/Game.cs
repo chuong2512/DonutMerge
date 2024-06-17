@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
+using GameCore.Runtime;
 using JetBrains.Annotations;
 
 public enum SkillType
@@ -160,6 +161,7 @@ public class Game : Singleton<Game>
                 var fr = SpawnFruit(a.nextLevelPrefab, pos);
                 fr.SetSimulated(true);
                 fr.PlayFx();
+                NiceVibration.Instance.Light();
                 if (ReferenceEquals(a, b)) return;
                 AudioManager.Instance.PlaySFX("merge");
             }
@@ -188,13 +190,13 @@ public class Game : Singleton<Game>
         for (int i = 0; i < fruits.Count; i++)
         {
             fruits[i].SetSimulated(false);
-            AddScore(fruits[i].score);
+            //AddScore(fruits[i].score);
             Destroy(fruits[i].gameObject);
         }
 
         GOverBestScore.text = "BEST: " + numHighScore;
         GOverScore.text = "" + score;
-
+        GameDataManager.Instance.playerData.Coin += score;
 #if UNITY_EDITOR
         //todo REMOVE THIS
         GameDataManager.Instance.playerData.Coin += score;
@@ -224,7 +226,7 @@ public class Game : Singleton<Game>
         }
         else
         {
-            if ((score / numHighScore) > 0.5f)
+            if ((score / (float) numHighScore) > 0.5f)
             {
                 Star0.SetActive(true);
                 Star1.SetActive(true);

@@ -285,6 +285,7 @@ GameObject:
   - component: {fileID: 2234922354950481671}
   - component: {fileID: 2234922354950481664}
   - component: {fileID: 7291194892019405584}
+  - component: {fileID: 2849122957738218928}
   m_Layer: 5
   m_Name: ButtonShopSkill 1
   m_TagString: Untagged
@@ -416,6 +417,20 @@ MonoBehaviour:
   _button: {fileID: 2234922354950481664}
   _amountText: {fileID: 293902875358503355}
   _priceText: {fileID: 0}
+--- !u!114 &2849122957738218928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2234922354950481666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd9b5da9481b4bab98e1a22f26943253, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vibration: 1
+  sound: 1
 --- !u!1 &8214201119331577135
 GameObject:
   m_ObjectHideFlags: 0

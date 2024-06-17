@@ -225,6 +225,7 @@ GameObject:
   - component: {fileID: 4349934393950148731}
   - component: {fileID: 4349934393950148676}
   - component: {fileID: 436748031219633966}
+  - component: {fileID: 967280999860533966}
   m_Layer: 5
   m_Name: ButtonChoose
   m_TagString: Untagged
@@ -354,6 +355,20 @@ MonoBehaviour:
   onChooose: {fileID: 8929322895918232953}
   lockObj: {fileID: 4349934393255535171}
   price: {fileID: 4349934394318369876}
+--- !u!114 &967280999860533966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4349934393950148678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd9b5da9481b4bab98e1a22f26943253, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vibration: 1
+  sound: 1
 --- !u!1 &4349934394318369878
 GameObject:
   m_ObjectHideFlags: 0

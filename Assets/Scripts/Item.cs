@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using GameCore.Runtime;
 using UnityEngine;
 
 public class Item : MonoBehaviour
@@ -25,6 +24,7 @@ public class Item : MonoBehaviour
             FxObj.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
             _fruitObj.SetActive(false);
             AudioManager.Instance.PlaySFX("boom");
+            NiceVibration.Instance.Heavy();
             Destroy(this.gameObject);
         }
 
@@ -36,6 +36,7 @@ public class Item : MonoBehaviour
             FxObj.transform.position = this.transform.position;
             FxObj.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
             _fruitObj.GetComponent<Fruit>().NextObj();
+            NiceVibration.Instance.Light();
             AudioManager.Instance.PlaySFX("levelup");
             Destroy(this.gameObject);
         }

@@ -1,5 +1,6 @@
 using System;
 using DG.Tweening;
+using GameCore.Runtime;
 using UnityEngine;
 
 public class Fruit : MonoBehaviour
@@ -110,6 +111,7 @@ public class Fruit : MonoBehaviour
         {
             InitFx(1.5f);
             Destroy(gameObject);
+            NiceVibration.Instance.Heavy();
         }
     }
 }

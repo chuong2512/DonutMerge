@@ -1,7 +1,4 @@
-﻿using System;
-using UnityEngine;
-
-namespace ChuongCustom
+﻿namespace ChuongCustom
 {
     public class SoundToggle : SettingToggle
     {

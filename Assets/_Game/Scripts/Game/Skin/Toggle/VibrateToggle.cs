@@ -1,20 +1,18 @@
-﻿using UnityEngine;
+﻿using GameCore.Runtime;
 
 namespace ChuongCustom
 {
     public class VibrateToggle : SettingToggle
     {
-        private bool check;
-
         private void OnEnable()
         {
-            Toggle(check);
+            Toggle(NiceVibration.Instance.Enable);
         }
 
         protected override void OnClickToggle()
         {
-            check = !check;
-            Toggle(check);
+            NiceVibration.Instance.Enable = !NiceVibration.Instance.Enable;
+            Toggle(NiceVibration.Instance.Enable);
         }
     }
 }

@@ -136,7 +136,7 @@ public class Game : Singleton<Game>
         var rand = Random.Range(0, 5);
         var prefab = fruitPrefabList[rand].gameObject;
         var pos = spawnPoint.position;
-
+        AudioManager.Instance.PlaySFX("spawn");
         return SpawnFruit(prefab, pos);
     }
 
@@ -160,6 +160,8 @@ public class Game : Singleton<Game>
                 var fr = SpawnFruit(a.nextLevelPrefab, pos);
                 fr.SetSimulated(true);
                 fr.PlayFx();
+                if (ReferenceEquals(a, b)) return;
+                AudioManager.Instance.PlaySFX("merge");
             }
         };
 
@@ -468,7 +470,7 @@ public class Game : Singleton<Game>
             return;
         }
 
-        var listPos = new List<Vector3>();
+        /*var listPos = new List<Vector3>();
 
         var count = fruits.Count;
 
@@ -483,10 +485,13 @@ public class Game : Singleton<Game>
         for (int i = 0; i < listPos.Count - 1; i++)
         {
             SpawnRandomFruit(listPos[i]);
+        }*/
+        if (fruit != null)
+        {
+            RemoveFruit(fruit);
+            fruit.InitFx(1f);
         }
-        
         fruit = SpawnNextFruit();
-
         _gameData.playerData.MinusNumberSkill((int) SkillType.Roll, 1);
         CheckInfo();
     }
@@ -513,19 +518,20 @@ public class Game : Singleton<Game>
             return;
         }
 
+        fruits.Remove(fruit);
         fruits.Shuffle();
 
-        var count = Mathf.Min(5, fruits.Count);
+        var count = Mathf.Min(3, fruits.Count);
 
         for (int i = count - 1; i >= 0; i--)
         {
             var f = fruits[i];
-            f.PlayFx();
+  
+            f.InitFx();
             RemoveFruit(f);
         }
-
-        fruit = SpawnNextFruit();
-        
+        fruits.Add(fruit);
+        AudioManager.Instance.PlaySFX("boom");
         _gameData.playerData.MinusNumberSkill((int) SkillType.Destroy, 1);
         CheckInfo();
     }

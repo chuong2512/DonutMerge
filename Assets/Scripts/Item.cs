@@ -24,6 +24,7 @@ public class Item : MonoBehaviour
             FxObj.transform.position = this.transform.position;
             FxObj.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
             _fruitObj.SetActive(false);
+            AudioManager.Instance.PlaySFX("boom");
             Destroy(this.gameObject);
         }
 
@@ -35,6 +36,7 @@ public class Item : MonoBehaviour
             FxObj.transform.position = this.transform.position;
             FxObj.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
             _fruitObj.GetComponent<Fruit>().NextObj();
+            AudioManager.Instance.PlaySFX("levelup");
             Destroy(this.gameObject);
         }
     }

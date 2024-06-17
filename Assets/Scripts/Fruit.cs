@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using UnityEngine;
 
 public class Fruit : MonoBehaviour
@@ -41,7 +42,27 @@ public class Fruit : MonoBehaviour
 
     public void PlayFx()
     {
+        _fx.Simulate(0.0f, true, true);
         _fx.Play();
+    }
+
+    public void InitFx(float scale = 2f)
+    {
+        var newFx = Instantiate(_fx, null);
+        newFx.transform.position = _fx.transform.position;
+        newFx.transform.localScale = transform.localScale * scale;
+        newFx.Play();
+        DOVirtual.DelayedCall(newFx.main.duration + 0.1f, () =>
+        {
+            try
+            {
+                Destroy(newFx.gameObject);
+            }
+            catch (Exception e)
+            {
+                Debug.LogWarning(e);
+            }
+        });
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -84,6 +105,11 @@ public class Fruit : MonoBehaviour
         if (nextLevelPrefab != null)
         {
             OnLevelUp?.Invoke(this, this);
+        }
+        else
+        {
+            InitFx(1.5f);
+            Destroy(gameObject);
         }
     }
 }

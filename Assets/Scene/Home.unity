@@ -272,7 +272,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6004422521838522346, guid: d5c2965d516cfae40a37b02129a8f9cf, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6004422521838522346, guid: d5c2965d516cfae40a37b02129a8f9cf, type: 3}
       propertyPath: m_AnchorMin.x
@@ -280,7 +280,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6004422521838522346, guid: d5c2965d516cfae40a37b02129a8f9cf, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6004422521838522346, guid: d5c2965d516cfae40a37b02129a8f9cf, type: 3}
       propertyPath: m_SizeDelta.x
@@ -320,11 +320,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6004422521838522346, guid: d5c2965d516cfae40a37b02129a8f9cf, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 898.90283
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6004422521838522346, guid: d5c2965d516cfae40a37b02129a8f9cf, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -76.24
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6004422521838522346, guid: d5c2965d516cfae40a37b02129a8f9cf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -344,7 +344,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6004422521838522347, guid: d5c2965d516cfae40a37b02129a8f9cf, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6004422522279904921, guid: d5c2965d516cfae40a37b02129a8f9cf, type: 3}
       propertyPath: m_text
@@ -1753,9 +1753,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 254555847}
     m_Modifications:
+    - target: {fileID: 2006685919802001710, guid: e9cd9b4f088e4ce4fbae816300e459cd, type: 3}
+      propertyPath: m_text
+      value: Suffled spawn ball
+      objectReference: {fileID: 0}
     - target: {fileID: 4784721824143231818, guid: e9cd9b4f088e4ce4fbae816300e459cd, type: 3}
       propertyPath: id
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784721824143231818, guid: e9cd9b4f088e4ce4fbae816300e459cd, type: 3}
+      propertyPath: _price
+      value: 350
       objectReference: {fileID: 0}
     - target: {fileID: 6039406654917043845, guid: e9cd9b4f088e4ce4fbae816300e459cd, type: 3}
       propertyPath: m_Name
@@ -1844,6 +1852,10 @@ PrefabInstance:
     - target: {fileID: 6039406654917043846, guid: e9cd9b4f088e4ce4fbae816300e459cd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6039406655928985954, guid: e9cd9b4f088e4ce4fbae816300e459cd, type: 3}
+      propertyPath: m_text
+      value: 350<sprite=0>
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2576,6 +2588,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 254555847}
     m_Modifications:
+    - target: {fileID: 2006685919802001710, guid: e9cd9b4f088e4ce4fbae816300e459cd, type: 3}
+      propertyPath: m_text
+      value: Explode the selected ball
+      objectReference: {fileID: 0}
     - target: {fileID: 4784721824143231818, guid: e9cd9b4f088e4ce4fbae816300e459cd, type: 3}
       propertyPath: id
       value: 3
@@ -4108,6 +4124,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11400014, guid: ea5a15e377531e14ea0b0bd9edbe181b, type: 3}
+      propertyPath: showLocalization
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400014, guid: ea5a15e377531e14ea0b0bd9edbe181b, type: 3}
+      propertyPath: showMusicDucking
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400014, guid: ea5a15e377531e14ea0b0bd9edbe181b, type: 3}
+      propertyPath: showAdvancedSettings
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400014, guid: ea5a15e377531e14ea0b0bd9edbe181b, type: 3}
+      propertyPath: musicDuckingSounds.Array.data[0].soundType
+      value: '[None]'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5090,7 +5122,15 @@ MonoBehaviour:
   - name: _button
     clip: {fileID: 8300000, guid: d2131d7e3b92fa84e84a3d1c14c121ed, type: 3}
   - name: _gameover
-    clip: {fileID: 8300000, guid: f9f3e05e0b56f8d428abeda38fc5357b, type: 3}
+    clip: {fileID: 8300000, guid: 3700eb1eb9d59ad4e9863702d31d5cf7, type: 3}
+  - name: boom
+    clip: {fileID: 8300000, guid: efce3cd619340404dae0f5d57eff63e8, type: 3}
+  - name: levelup
+    clip: {fileID: 8300000, guid: 66f181a55ebcc01499ca8277e0311a7d, type: 3}
+  - name: merge
+    clip: {fileID: 8300000, guid: cfffc90f1338c084fbed6bf9857620f7, type: 3}
+  - name: spawn
+    clip: {fileID: 8300000, guid: 36cb5818ae0124f4692d9d6915132581, type: 3}
   musicSource: {fileID: 855739635}
   sfxSource: {fileID: 905053093}
 --- !u!4 &1715106115
@@ -6163,6 +6203,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 254555847}
     m_Modifications:
+    - target: {fileID: 2006685919802001710, guid: e9cd9b4f088e4ce4fbae816300e459cd, type: 3}
+      propertyPath: m_text
+      value: Increase level of the ball
+      objectReference: {fileID: 0}
     - target: {fileID: 4784721824143231818, guid: e9cd9b4f088e4ce4fbae816300e459cd, type: 3}
       propertyPath: id
       value: 1
@@ -6790,9 +6834,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 254555847}
     m_Modifications:
+    - target: {fileID: 4784721824143231818, guid: e9cd9b4f088e4ce4fbae816300e459cd, type: 3}
+      propertyPath: _price
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 6039406654917043845, guid: e9cd9b4f088e4ce4fbae816300e459cd, type: 3}
       propertyPath: m_Name
       value: ButtonShopSkill
+      objectReference: {fileID: 0}
+    - target: {fileID: 6039406654917043845, guid: e9cd9b4f088e4ce4fbae816300e459cd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6039406654917043846, guid: e9cd9b4f088e4ce4fbae816300e459cd, type: 3}
       propertyPath: m_Pivot.x
